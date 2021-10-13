@@ -1,21 +1,13 @@
-import Head from "next/head";
-import HeroBanner from "../components/HeroBanner";
-import Header from "../components/Header";
 import SmallCard from "../components/SmallCard";
 import MediumCard from "../components/MediumCard";
 import LargeCard from "../components/LargeCard";
-import Footer from "../components/Footer";
+import Layout from "../components/Layout";
+import HeroBanner from "../components/HeroBanner";
 
 export default function Home({ exploreData, liveanywhereData }) {
   return (
-    <>
-      <Head>
-        <title>Aribnb Clone</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
+    <Layout>
       <HeroBanner />
-
       <main className="max-w-7xl mx-auto px-8 md:px-16">
         <section className="pt-6">
           <h2 className="text-4xl font-semibold pb-5">Explore nearby</h2>
@@ -49,9 +41,7 @@ export default function Home({ exploreData, liveanywhereData }) {
           />
         </section>
       </main>
-
-      <Footer />
-    </>
+    </Layout>
   );
 }
 
