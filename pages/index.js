@@ -33,7 +33,7 @@ export default function Home({ exploreData, liveanywhereData }) {
 
         <section>
           <h2 className="text-4xl font-semibold py-8">Live anywhere</h2>
-          <div className="flex pb-3 -mb-3 pl-3 -ml-3 space-x-4 overflow-x-scroll scrollbar-hide">
+          <div className="flex pb-3 -mb-3 pl-3 -ml-3 gap-x-8 overflow-x-scroll scrollbar-hide">
             {liveanywhereData?.map(({ img, title }) => (
               <MediumCard key={img} img={img} title={title} />
             ))}
