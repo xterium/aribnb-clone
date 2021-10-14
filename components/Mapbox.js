@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { getCenter } from "geolib";
-import { Image } from "next/image";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
 const Mapbox = ({ searchResults }) => {
@@ -18,6 +17,7 @@ const Mapbox = ({ searchResults }) => {
     height: "100%",
     latitude: mapCenter.latitude,
     longitude: mapCenter.longitude,
+    pitch: 55,
     zoom: 15,
   });
 

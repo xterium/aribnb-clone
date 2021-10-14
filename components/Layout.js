@@ -4,7 +4,7 @@ import Header from "./Header";
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <div className="min-w-[370px]">
       <Head>
         <title>Aribnb Clone</title>
         <link rel="icon" href="/favicon.ico" />
@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
       <Header />
       {children}
       <Footer />
-    </>
+    </div>
   );
 };
 

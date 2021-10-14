@@ -24,13 +24,16 @@ const search = ({ searchResults }) => {
     <Layout>
       <main className="flex relative">
         <section className="flex-grow pt-14 px-6 h-100 overflow-y-scroll scrollbar-hide">
-          <p className="text-sm">
-            300+ Stays{" "}
-            <span className="date-orange">{useDateFormatter(startDate)}</span>-
-            <span className="date-orange">{useDateFormatter(endDate)}</span> for{" "}
-            {noOfGuests === "1"
-              ? `${noOfGuests} guest`
-              : `${noOfGuests} guests`}
+          <p className="text-sm flex gap-2">
+            <span className="hidden md:inline-flex">300+ Stays </span>
+            <span className="date-orange">{useDateFormatter(startDate)}</span>
+            <span className="date-orange">{useDateFormatter(endDate)}</span>
+            <span className="hidden md:inline-flex">
+              for{" "}
+              {noOfGuests === "1"
+                ? `${noOfGuests} guest`
+                : `${noOfGuests} guests`}
+            </span>
           </p>
           <h1 className="text-3xl font-bold mt-2 mb-6">Stays in {location}</h1>
 
@@ -60,7 +63,7 @@ const search = ({ searchResults }) => {
           </div>
         </section>
         {/* <section className="hidden xl:inline-flex"> */}
-        <section className="hidden xl:inline-flex xl:min-w-[800px]">
+        <section className="hidden xl:inline-flex xl:min-w-[600px]">
           <MapBox searchResults={searchResults} />
         </section>
       </main>

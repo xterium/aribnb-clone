@@ -39,6 +39,11 @@ const Header = () => {
   };
 
   const handleBtnSearch = () => {
+    if (!searchInput) {
+      alert("Please type in a location");
+      return;
+    }
+
     router.push({
       pathname: "/search",
       query: {
@@ -79,7 +84,10 @@ const Header = () => {
           onChange={(event) => setSearchInput(event.target.value)}
           placeholder={router.query.location || "Search location"}
         />
-        <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2" />
+        <SearchIcon
+          onClick={handleBtnSearch}
+          className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2"
+        />
       </div>
 
       <div className="flex items-center space-x-4 justify-end text-gray-500">
@@ -95,8 +103,9 @@ const Header = () => {
       </div>
 
       {showAdvancedSearch && (
-        <div className="fex flex-col col-span-3 mx-auto">
+        <div className="fex flex-col col-span-3 mx-auto mt-2">
           <DateRangePicker
+            className="flex-wrap"
             ranges={[selectionRange]}
             minDate={new Date()}
             rangeColors={["#FD5B61"]}

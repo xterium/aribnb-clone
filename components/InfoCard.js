@@ -14,17 +14,17 @@ function InfoCard({
   lat = 51.5421655,
 }) {
   return (
-    <div className="flex py-7 pw-2 border-b pr-4 cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t">
-      <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0">
+    <div className="flex flex-wrap md:flex-nowrap py-7 pw-2 border-b pr-4 cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t">
+      <div className="relative h-40 w-full px-10 md:h-52 md:w-80 flex-shrink-0">
         <Image
-          className="rounded-xl"
+          className="rounded-xl px-10 md:px-0"
           src={img}
           layout="fill"
           objectFit="cover"
         />
       </div>
 
-      <div className="flex flex-col flex-grow pl-5">
+      <div className="flex flex-col flex-grow mt-2 md:mt-0 md:pl-5">
         <div className="flex justify-between">
           <p>{location}</p>
           <HeartIcon className="h-7 cursor-pointer" />
