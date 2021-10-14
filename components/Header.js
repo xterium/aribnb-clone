@@ -16,11 +16,16 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
 const Header = () => {
-  const [searchInput, setSearchInput] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [noOfGuests, setNoOfGuests] = useState(1);
   const router = useRouter();
+  const [searchInput, setSearchInput] = useState(router.query.location || "");
+  const [startDate, setStartDate] = useState(
+    router.query.startDate ? new Date(router.query.startDate) : new Date()
+  );
+  const [endDate, setEndDate] = useState(
+    router.query.endDate ? new Date(router.query.endDate) : new Date()
+  );
+  const [noOfGuests, setNoOfGuests] = useState(1);
+  const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
 
   const selectionRange = {
     startDate,
@@ -48,7 +53,7 @@ const Header = () => {
   };
 
   const handleBtnCancel = () => {
-    setSearchInput("");
+    setShowAdvancedSearch(false);
   };
 
   return (
@@ -69,9 +74,10 @@ const Header = () => {
         <input
           className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-300"
           type="text"
+          onFocus={() => setShowAdvancedSearch(true)}
           value={searchInput}
           onChange={(event) => setSearchInput(event.target.value)}
-          placeholder="Start your search"
+          placeholder={router.query.location || "Search location"}
         />
         <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2" />
       </div>
@@ -88,7 +94,7 @@ const Header = () => {
         </div>
       </div>
 
-      {searchInput && (
+      {showAdvancedSearch && (
         <div className="fex flex-col col-span-3 mx-auto">
           <DateRangePicker
             ranges={[selectionRange]}

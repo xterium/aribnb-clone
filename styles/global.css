@@ -6,4 +6,33 @@
     rounded-full cursor-pointer hover:shadow-lg active:scale-95 
     active:bg-gray-100 transition duration-100 ease-out;
   }
+
+  .date-orange {
+    @apply bg-red-400 rounded-xl text-white text-sm px-2 py-1 mx-1;
+  }
+}
+
+.mapboxgl-popup {
+  max-width: 320px;
+  max-height: 250px;
+  z-index: 1;
+}
+
+.mapboxgl-popup-content {
+  padding: 0 !important;
+  border-radius: 1rem !important;
+  overflow: hidden;
+}
+
+.mapboxgl-popup-content button {
+  --tw-bg-opacity: 1;
+  background-color: rgba(248, 113, 113, var(--tw-bg-opacity));
+  color: #fff;
+  border-radius: 0 8px;
+  position: absolute;
+  width: 30px;
+  z-index: 20;
+}
+.rdrInputRanges {
+  display: none;
 }

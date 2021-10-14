@@ -1,21 +1,33 @@
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
-import { format } from "date-fns";
+import useDateFormatter from "../components/hooks/useDateFormatter";
 import InfoCard from "../components/InfoCard";
+import MapBox from "../components/Mapbox";
 
 const search = ({ searchResults }) => {
   const {
     query: { location, startDate, endDate, noOfGuests },
   } = useRouter();
 
+  if (!location || !startDate || !endDate || !noOfGuests) {
+    return (
+      <Layout>
+        <h1 className="flex text-xl max-w-md mx-auto py-56">
+          No hosts available, try a different search
+        </h1>
+        ;
+      </Layout>
+    );
+  }
+
   return (
     <Layout>
-      <main className="flex">
-        <section className="flex-grow pt-14 px-6">
-          <p className="text-xs">
+      <main className="flex relative">
+        <section className="flex-grow pt-14 px-6 h-100 overflow-y-scroll scrollbar-hide">
+          <p className="text-sm">
             300+ Stays{" "}
-            {startDate ? format(new Date(startDate), "dd MMMM yy") : "N/A"}-{" "}
-            {endDate ? format(new Date(endDate), "dd MMMM yy") : "N/A"} for{" "}
+            <span className="date-orange">{useDateFormatter(startDate)}</span>-
+            <span className="date-orange">{useDateFormatter(endDate)}</span> for{" "}
             {noOfGuests === "1"
               ? `${noOfGuests} guest`
               : `${noOfGuests} guests`}
@@ -46,6 +58,10 @@ const search = ({ searchResults }) => {
               />
             ))}
           </div>
+        </section>
+        {/* <section className="hidden xl:inline-flex"> */}
+        <section className="hidden xl:inline-flex xl:min-w-[800px]">
+          <MapBox searchResults={searchResults} />
         </section>
       </main>
     </Layout>
